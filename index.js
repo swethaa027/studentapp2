@@ -79,6 +79,17 @@ app.post("/students", (req,res)=>{
         });
     });
 
+app.put("/students/:id",(req,res)=>{
+    let id=req.params.id;
+    Student.findByIdAndUpdate (id),req.body
+    .then(()=>{
+        req.json("Details updated successfully");
+    }).catch(()=>{
+        req.json("error updaying the details");
+    });
+});
+
+
 app.listen("4000",()=>{
 console.log("started server on 4000");
 });
